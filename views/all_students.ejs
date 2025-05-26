@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background: url('/svit_pic.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .students-overlay {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 35px 30px 30px 30px;
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+            max-width: 900px;
+            width: 100%;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .college-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            background: #fff;
+            padding: 6px;
+        }
+        .students-title {
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .table thead th {
+            background: #007bff;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .table tbody td {
+            background: #f8f9fa;
+            color: #34495e;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .badge-success {
+            background-color: #28a745;
+        }
+        .badge-danger {
+            background-color: #dc3545;
+        }
+        .btn-back {
+            margin-top: 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            width: 120px;
+        }
+        @media (max-width: 1000px) {
+            .students-overlay {
+                max-width: 98vw;
+                padding: 20px 5px;
+            }
+            .table-responsive {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="students-overlay mx-auto">
+        <div class="logo-container">
+            <img src="/logo.png" alt="College Logo" class="college-logo">
+        </div>
+        <h1 class="students-title"><i class="fas fa-users"></i> All Students</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th>Sl. No.</th>
+                        <th>Name</th>
+                        <th>Roll</th>
+                        <th>Room No.</th>
+                        <th>Payment Status</th>
+                        <th>Room Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% students.forEach(student => { %>
+                        <tr>
+                            <td><%= student.sl_no %></td>
+                            <td><%= student.name %></td>
+                            <td><%= student.roll %></td>
+                            <td><%= student.room_no || 'Not Assigned' %></td>
+                            <td>
+                                <% if (student.payment_status === 'PAID') { %>
+                                    <span class="badge badge-success">PAID</span>
+                                <% } else { %>
+                                    <span class="badge badge-danger">NOT PAID</span>
+                                <% } %>
+                            </td>
+                            <td><%= student.room_status %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a href="/admin-dashboard" class="btn btn-secondary btn-back">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </div>
+</body>
+</html>

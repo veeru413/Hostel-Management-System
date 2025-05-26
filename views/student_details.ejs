@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            background: url('/svit_pic.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay {
+            background: rgba(255,255,255,0.93);
+            border-radius: 20px;
+            padding: 40px 30px 30px 30px;
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .college-logo {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            background: #fff;
+            padding: 6px;
+        }
+        .portal-title {
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .details-table th {
+            width: 40%;
+            background: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 600;
+            border-top: none;
+        }
+        .details-table td {
+            background: #fff;
+            color: #34495e;
+            border-top: none;
+        }
+        .btn-success, .btn-secondary {
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .btn-success {
+            width: 100%;
+            margin-top: 18px;
+        }
+        .btn-secondary {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay mx-auto">
+        <div class="logo-container">
+            <img src="/logo.png" alt="College Logo" class="college-logo">
+        </div>
+        <h1 class="portal-title"><i class="fas fa-user-graduate"></i> Student Details</h1>
+        <table class="table table-bordered details-table mt-3">
+            <tr>
+                <th><i class="fas fa-user"></i> Name</th>
+                <td><%= student.name %></td>
+            </tr>
+            <tr>
+                <th><i class="fas fa-id-card"></i> Roll</th>
+                <td><%= student.roll %></td>
+            </tr>
+            <tr>
+                <th><i class="fas fa-door-open"></i> Room No.</th>
+                <td><%= student.room_no || 'Not Assigned' %></td>
+            </tr>
+            <tr>
+                <th><i class="fas fa-money-check-alt"></i> Payment Status</th>
+                <td>
+                    <% if (student.payment_status === 'PAID') { %>
+                        <span class="badge badge-success">PAID</span>
+                    <% } else { %>
+                        <span class="badge badge-danger">NOT PAID</span>
+                    <% } %>
+                </td>
+            </tr>
+            <tr>
+                <th><i class="fas fa-bed"></i> Room Status</th>
+                <td><%= student.room_status %></td>
+            </tr>
+        </table>
+        <% if (student.payment_status === 'NOT PAID') { %>
+            <a href="/payment" class="btn btn-success">
+                <i class="fas fa-credit-card"></i> Pay Now
+            </a>
+        <% } %>
+        <a href="/logout" class="btn btn-secondary">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+</body>
+</html>

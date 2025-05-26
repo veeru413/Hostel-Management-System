@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            background: url('/svit_pic.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay {
+            background: rgba(255,255,255,0.85);
+            border-radius: 20px;
+            padding: 40px 30px 30px 30px;
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .college-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            background: #fff;
+            padding: 8px;
+        }
+        .portal-title {
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #2c3e50;
+        }
+        .login-options {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .login-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px 20px;
+            width: 48%;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+        .login-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(44,62,80,0.15);
+        }
+        .login-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .login-btn {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay mx-auto">
+        <div class="logo-container">
+            <img src="/logo.png" alt="College Logo" class="college-logo">
+        </div>
+        <h1 class="portal-title mb-4 text-center">Hostel Portal</h1>
+        <div class="login-options">
+            <div class="login-card">
+                <i class="fas fa-user-graduate login-icon"></i>
+                <h5>Student</h5>
+                <a href="/student-login" class="btn btn-primary login-btn">
+                    Login
+                </a>
+            </div>
+            <div class="login-card">
+                <i class="fas fa-user-shield login-icon"></i>
+                <h5>Administrator</h5>
+                <a href="/admin-login" class="btn btn-secondary login-btn">
+                    Login
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
